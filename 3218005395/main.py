@@ -13,6 +13,16 @@ def clear(l):
 # 原文的读取，过滤
 #orig_path = 'D:/学习资料/软工/pythonProject/test/orig.txt'
 orig_path = input("输入论文原文的文件的绝对路径:\t")
+test_path = input("输入抄袭版论文的文件的绝对路径:\t")
+
+# 异常处理
+if not os.path.exists(orig_path):
+    print("论文源文件不存在！")
+    exit()
+if not os.path.exists(test_path):
+    print("抄袭论文文件不存在！")
+    exit()
+    
 # print('%s' % orig_path)
 orig_file = open(orig_path, 'r', encoding='utf-8')  # 打开文本
 text1 = orig_file.read()
@@ -21,7 +31,6 @@ text1 = clear(text1)  # 对文本进行清理
 
 # 查重文本的读取和清理
 # test_path = 'D:/学习资料/软工/pythonProject/test/orig_0.8_add.txt'
-test_path = input("输入抄袭版论文的文件的绝对路径:\t")
 test_file = open(test_path, 'r', encoding='utf-8')
 text2 = test_file.read()
 test_file.close()
